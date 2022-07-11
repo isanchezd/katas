@@ -1,0 +1,17 @@
+{
+  "name": "kata",
+  "version": "1.0.0",
+  "description": "A personal repo with my Kata solutions from redradix katas",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": "https://github.com/ivansanchezd/katas.git",
+  "author": "Iván Sánchez Díaz <ivansanchez@redradix.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
+
