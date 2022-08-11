@@ -3,26 +3,19 @@ function expandedForm(num) {
     .toString()
     .split("")
     .reverse()
-    .map((unit, index) =>
-      unit != 0 ? geNumberInExpandedForm(unit, index) : null
+    .map((digit, index) =>
+        digit !== '0' ? geDigitInExpandedForm(digit, index) : null
     )
-    .filter((unit) => unit !== null)
+    .filter((digit) => digit !== null)
     .reverse()
-    .reduce((previousUnit, unit) => `${previousUnit} + ${unit}`);
+    .reduce((previousDigit, digit) => `${previousDigit} + ${digit}`);
 
   return numInExpandedForm;
 }
 
-const geNumberInExpandedForm = (number, units) => `${number}${getZeros(units)}`;
+const geDigitInExpandedForm = (digit, units) => `${digit}${getZeros(units)}`;
 
-function getZeros(units) {
-  let zeros = "";
+const getZeros = (units) => '0'.repeat(units)
 
-  for (let i = 1; i <= units; i++) {
-    zeros += "0";
-  }
-
-  return zeros;
-}
 
 module.exports = expandedForm;
