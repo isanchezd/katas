@@ -1,21 +1,16 @@
 function expandedForm(num) {
-  const numInExpandedForm = num
+  const digits = num
     .toString()
-    .split("")
-    .reverse()
-    .map((digit, index) =>
-        digit !== '0' ? geDigitInExpandedForm(digit, index) : null
-    )
-    .filter((digit) => digit !== null)
-    .reverse()
-    .reduce((previousDigit, digit) => `${previousDigit} + ${digit}`);
+    .split('')
 
-  return numInExpandedForm;
+  return digits
+    .map((digit, index, arr) => geDigitInExpandedForm(digit, index, arr))
+    .filter(digit => !digit.startsWith('0'))
+    .join(' + ')
 }
 
-const geDigitInExpandedForm = (digit, units) => `${digit}${getZeros(units)}`;
 
-const getZeros = (units) => '0'.repeat(units)
+const geDigitInExpandedForm = (digit, index, digits) => digit.padEnd(digits.length - index, '0')
 
 
 module.exports = expandedForm;
