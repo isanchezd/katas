@@ -1,17 +1,15 @@
-function inArray(array1,array2){
-    const result = []
+const getOrderedList = items => Array.from(items).sort()
+
+function inArray(array1, array2) {
+    const itemsIn = new Set()
   
     array1.forEach(item1 => {
-      if(result.includes(item1)) {
-        return
-      }
-      
       if(array2.some(item2 => item2.includes(item1))) {
-        result.push(item1)
+        itemsIn.add(item1)
       }
     })
-    
-    return result.sort()
-  }
+
+    return getOrderedList(itemsIn)
+}
 
 module.exports = inArray
