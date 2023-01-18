@@ -1,15 +1,21 @@
 function multiplicationTable(size) {
-  const table = Array(size).fill([]);
+  const table = [];
+  const COEFICENTS = getCoeficents(size);
 
-  return table.map((item, index) => getMultiplicationRow(index + 1, size));
+  for (let iterator = 0; iterator < size; iterator++) {
+    const monomial = iterator + 1;
+    table.push(getMultiplicationRow(monomial, COEFICENTS));
+  }
+
+  return table;
 }
 
-function getBaseNumbers(size) {
-  return Array.from({ length: size }, (value, index) => index + 1);
+function getCoeficents(size) {
+  return [...Array(size).keys()].map((digit) => digit + 1);
 }
 
-function getMultiplicationRow(operator, size) {
-  return Array.from(getBaseNumbers(size), (digit) => digit * operator);
+function getMultiplicationRow(monomial, coeficents) {
+  return Array.from(coeficents, (coeficent) => coeficent * monomial);
 }
 
 module.exports = multiplicationTable;
